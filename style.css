@@ -1,0 +1,594 @@
+:root {
+    --color-env: #fce4ec;
+    --color-env2: #f8bbd9;
+    --color-flap: #e91e63;
+    --color-bg: #fdf2f8;
+    --color-heart: #ff69b4;
+    --color-sparkle: #ffd700;
+    --wax-red: #d81b60;
+}
+
+body {
+    background: linear-gradient(135deg, #fdf2f8 0%, #fce4ec 50%, #f3e5f5 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: auto;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+body.modal-open {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.envlope-wrapper {
+    height: 500px;
+    margin: 0;
+    animation: float 3s ease-in-out infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#envelope {
+    position: relative;
+    width: 450px;
+    height: 280px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin: 0 auto;
+    background-color: var(--color-flap);
+    box-shadow: 0 8px 32px rgba(0,0,0,.1);
+    cursor: pointer;
+}
+
+.front {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 3;
+}
+
+.flap {
+    border-left: 225px solid transparent;
+    border-right: 225px solid transparent;
+    border-bottom: 110px solid transparent;
+    border-top: 170px solid var(--color-flap);
+    transform-origin: top;
+    pointer-events: none;
+}
+
+.pocket {
+    border-left: 225px solid var(--color-env);
+    border-right: 225px solid var(--color-env);
+    border-bottom: 110px solid var(--color-env2);
+    border-top: 170px solid transparent;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.wax-seal {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: var(--wax-red);
+    border-radius: 50%;
+    z-index: 4;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.wax-seal::before {
+    content: '💌';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+}
+
+.letter {
+    position: relative;
+    background-color: #fff8f9;
+    width: 95%;
+    margin: 0 auto;
+    height: 95%;
+    top: 0%;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(233, 30, 99, 0.15);
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.letter:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(180deg, 
+        rgba(255,255,255,0.00) 25%, 
+        rgba(252,228,236,0.30) 55%, 
+        rgba(252,228,236,0.60) 100%);
+    pointer-events: none;
+}
+
+.letter-header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f8bbd9;
+}
+
+.letter-header h1 {
+    color: #ad1457;
+    font-size: clamp(18px, 4vw, 24px);
+    margin-bottom: 5px;
+    font-family: 'Pacifico', cursive;
+}
+
+.date {
+    color: #e91e63;
+    font-size: clamp(12px, 2.5vw, 14px);
+    font-style: italic;
+}
+
+.letter-content {
+    height: calc(100% - 60px);
+    overflow-y: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.greeting {
+    font-size: clamp(16px, 3.5vw, 18px);
+    color: #ad1457;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+}
+
+.letter-body {
+    margin-bottom: 20px;
+}
+
+.letter-body p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    text-align: justify;
+    font-size: clamp(13px, 2.8vw, 15px);
+    color: #ad1457;
+}
+
+.signature {
+    text-align: right;
+    margin: 20px 0;
+    font-style: italic;
+    color: #e91e63;
+}
+
+.signature-line {
+    margin-bottom: 5px;
+}
+
+.signature-name {
+    font-weight: 600;
+    color: #ad1457;
+}
+
+.signature-date {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.commitment {
+    background: rgba(252, 228, 236, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 4px solid #e91e63;
+}
+
+.commitment h3 {
+    color: #ad1457;
+    font-size: clamp(14px, 3vw, 16px);
+    margin-bottom: 10px;
+    font-family: 'Pacifico', cursive;
+}
+
+.commitment ul {
+    list-style: none;
+    padding: 0;
+}
+
+.commitment li {
+    margin-bottom: 8px;
+    color: #ad1457;
+    font-size: clamp(12px, 2.5vw, 13px);
+    line-height: 1.4;
+}
+
+.message p {
+    margin: 10px 0;
+    font-size: 1.4em;
+    text-shadow: 0 2px 3px rgba(0,0,0,0.1);
+}
+
+.lyrics {
+    display: none;
+    font-size: 1em;
+    line-height: 1.5;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    max-height: 130px;
+    overflow-y: auto;
+}
+
+.lyric-page {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.lyric-page.active {
+    display: block;
+    opacity: 1;
+}
+
+.lyric-page p {
+    font-family: 'Pacifico', cursive;
+    font-size: 16px;
+    color: #ad1457;
+    line-height: 1.7;
+    text-align: center;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(233, 30, 99, 0.1);
+    padding: 5px;
+    font-weight: 400;
+}
+
+.open .flap {
+    transform: rotateX(180deg);
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), z-index 0.4s;
+    z-index: 1;
+}
+
+.close .flap {
+    transform: rotateX(0deg);
+    transition: transform 0.3s 0.2s cubic-bezier(0.25, 0.1, 0.25, 1), z-index 0.5s;
+    z-index: 5;
+}
+
+.close .letter {
+    position: relative;
+    width: 95%;
+    height: 95%;
+    transform: translateY(0px) scale(0.95) rotate(0deg);
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    z-index: 1;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 20px rgba(233, 30, 99, 0.15);
+    opacity: 1;
+}
+
+.open .letter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    width: min(90vw, 500px);
+    height: min(85vh, 700px);
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    overflow-y: auto;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    background: #fff8f9;
+    opacity: 1;
+    filter: none;
+}
+
+.letter-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f8bbd9;
+    border-radius: 5px;
+    z-index: 3;
+}
+
+.corner-tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.corner-br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+.hearts, .sparkles {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.heart, .sparkle {
+    position: absolute;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    position: absolute;
+    left: 25px;
+    top: 0;
+    width: 25px;
+    height: 40px;
+    background: var(--color-heart);
+    border-radius: 25px 25px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.sparkle {
+    width: 8px;
+    height: 8px;
+    background: var(--color-sparkle);
+    border-radius: 50%;
+    animation: sparkleTwinkle 1s infinite;
+}
+
+.close .heart,
+.close .sparkle {
+    opacity: 0;
+    animation: none;
+}
+
+.a1 { left: 20%; transform: scale(0.6); animation: slideUp 4s linear infinite, sideSway 2s ease-in-out infinite alternate; }
+.a2 { left: 55%; animation: slideUp 5s linear infinite, sideSway 4s ease-in-out infinite alternate; }
+.a3 { left: 10%; transform: scale(0.8); animation: slideUp 7s linear infinite, sideSway 2s ease-in-out infinite alternate; }
+
+.s1 { left: 30%; animation: sparkleUp 3s linear infinite; }
+.s2 { left: 60%; animation: sparkleUp 4s linear infinite; }
+.s3 { left: 45%; animation: sparkleUp 5s linear infinite; }
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes slideUp {
+    0% { top: 0; }
+    100% { top: -600px; }
+}
+
+@keyframes sideSway {
+    0% { margin-left: 0; }
+    50% { margin-left: 50px; }
+    100% { margin-left: 0; }
+}
+
+@keyframes sparkleUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-500px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes sparkleTwinkle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+}
+
+.controls {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.controls button {
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #e91e63, #f06292);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 12px 25px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+    font-family: 'Poppins', sans-serif;
+}
+
+.controls button:hover {
+    background: linear-gradient(45deg, #d81b60, #e91e63);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+}
+
+.open .lyrics {
+    display: block;
+    opacity: 1;
+}
+
+.page-indicator {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.8em;
+    color: #d46a84;
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    #envelope {
+        width: 350px;
+        height: 220px;
+    }
+    
+    .flap {
+        border-left-width: 175px;
+        border-right-width: 175px;
+        border-top-width: 130px;
+        border-bottom-width: 85px;
+    }
+    
+    .pocket {
+        border-left-width: 175px;
+        border-right-width: 175px;
+        border-top-width: 130px;
+        border-bottom-width: 85px;
+    }
+    
+    .envlope-wrapper {
+        height: 400px;
+        margin-top: 20px;
+    }
+    
+    .open .letter {
+        width: 95vw;
+        height: 85vh;
+        padding: 15px;
+        bottom: 80px;
+    }
+    
+    .controls {
+        margin-top: 30px;
+        gap: 15px;
+        padding: 0 20px;
+    }
+    
+    .controls button {
+        padding: 16px 40px;
+        font-size: 18px;
+        min-width: 140px;
+        min-height: 50px;
+        border-radius: 25px;
+        font-weight: 600;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+@media (max-width: 480px) {
+    #envelope {
+        width: 280px;
+        height: 180px;
+    }
+    
+    .flap {
+        border-left-width: 140px;
+        border-right-width: 140px;
+        border-top-width: 105px;
+        border-bottom-width: 70px;
+    }
+    
+    .pocket {
+        border-left-width: 140px;
+        border-right-width: 140px;
+        border-top-width: 105px;
+        border-bottom-width: 70px;
+    }
+    
+    .envlope-wrapper {
+        height: 350px;
+        margin-top: 10px;
+    }
+    
+    .open .letter {
+        width: 98vw;
+        height: calc(100vh - 120px);
+        padding: 12px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: -30px;
+    }
+    
+    .letter-content {
+        padding: 0 5px;
+        height: calc(100% - 60px);
+        padding-bottom: 20px;
+    }
+    
+    .controls {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 300px;
+        margin: 0;
+        padding: 0 20px;
+        z-index: 10;
+    }
+    
+    .controls button {
+        width: 100%;
+        padding: 18px 30px;
+        font-size: 18px;
+        min-height: 56px;
+        border-radius: 28px;
+        font-weight: 600;
+        box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+    }
+    
+    .controls button:active {
+        transform: scale(0.95);
+    }
+}
+
+@media (min-width: 1200px) {
+    #envelope {
+        width: 550px;
+        height: 340px;
+    }
+    
+    .flap {
+        border-left-width: 275px;
+        border-right-width: 275px;
+        border-top-width: 200px;
+        border-bottom-width: 130px;
+    }
+    
+    .pocket {
+        border-left-width: 275px;
+        border-right-width: 275px;
+        border-top-width: 200px;
+        border-bottom-width: 130px;
+    }
+    
+    .envlope-wrapper {
+        height: 600px;
+    }
+    
+    .open .letter {
+        width: 600px;
+        height: 700px;
+    }
+}
